@@ -1,22 +1,22 @@
-import { app, BrowserWindow, shell, ipcMain, Menu, MenuItem, screen } from "electron";
+import { app, BrowserWindow, ipcMain, Menu } from "electron";
 
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
 export default function listen(win: BrowserWindow) {
   ipcMain.on("show-context-menu", (event, params: { x: number, y: number }) => {
     const template = [
       {
-        label: 'Inspect element',
+        label: "Inspect element",
         click: () => {
           win?.webContents.inspectElement(params.x, params.y);
         }
       },
-      { type: 'separator' },
+      { type: "separator" },
       { 
-        label: 'Clear userData',
+        label: "Clear userData",
         click: () => {
-          const userDataPath = app.getPath('userData');
+          const userDataPath = app.getPath("userData");
           fs.readdir(userDataPath, (err, files) => {
             for (const file of files) {
               fs.unlink(path.join(userDataPath, file), err => { });

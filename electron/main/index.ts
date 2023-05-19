@@ -1,9 +1,8 @@
-import { app, BrowserWindow, shell, ipcMain, Menu, MenuItem, screen } from "electron";
+import { app, BrowserWindow, screen, shell } from "electron";
 import { release } from "node:os";
 import { join } from "node:path";
 import { Config } from "../common";
 import listen from "./ipc";
-
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith("6.1")) app.disableHardwareAcceleration();
