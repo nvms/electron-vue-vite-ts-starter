@@ -36,6 +36,7 @@ async function createWindow() {
     y: Config.get("position").y,
     title: "Main window",
     icon: join(process.env.PUBLIC, "favicon.ico"),
+    titleBarStyle: "hiddenInset",
     webPreferences: {
       preload,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production

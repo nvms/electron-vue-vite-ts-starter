@@ -12,13 +12,20 @@ window.addEventListener("contextmenu", (e) => {
 </script>
 
 <template>
-  <div id="app" class="flex justify-center items-center h-screen text-white">
-    <div>
-      <div class="flex flex-col justify-center items-center">
-        <p class="text-4xl font-bold mb-6">{{ counterStore.count }}</p>
-        <div class="flex justify-center items-center">
-          <UiButton v-tooltip="{ content: 'Increment' }" @click="counterStore.increment()" class="text-2xl mx-2">+</UiButton>
-          <UiButton v-tooltip="{ content: 'Decrement' }" @click="counterStore.decrement()" class="text-2xl mx-2">-</UiButton>
+  <div id="app" class="h-screen w-screen bg-gray-800 text-white">
+    <div class="titlebar w-screen absolute top-0 bg-gray-900 flex flex-nowrap whitespace-nowrap overflow-hidden">
+      <div class="ml-24 flex items-center">
+        electron vue ts starter
+      </div>
+    </div>
+    <div class="flex justify-center items-center h-screen text-white">
+      <div>
+        <div class="flex flex-col justify-center items-center">
+          <p class="text-4xl font-bold mb-6">{{ counterStore.count }}</p>
+          <div class="flex justify-center items-center">
+            <UiButton v-tooltip="{ content: 'Increment' }" @click="counterStore.increment()" class="text-2xl mx-2">+</UiButton>
+            <UiButton v-tooltip="{ content: 'Decrement' }" @click="counterStore.decrement()" class="text-2xl mx-2">-</UiButton>
+          </div>
         </div>
       </div>
     </div>
@@ -26,7 +33,14 @@ window.addEventListener("contextmenu", (e) => {
 </template>
 
 <style lang="scss">
-body {
-  @apply bg-gray-800 text-white;
+.titlebar {
+  height: 38px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.titlebar-button {
+  -webkit-app-region: no-drag;
 }
 </style>
